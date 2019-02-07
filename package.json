@@ -8,6 +8,9 @@
     "babel-core": "^6.26.3"
   },
   "dependencies": {
+    "@storybook/addon-info": "^4.1.11",
+    "@storybook/addon-knobs": "^4.1.11",
+    "@storybook/addons": "^4.1.11",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
   },
