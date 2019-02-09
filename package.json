@@ -1,7 +1,7 @@
 {
   "name": "design-system",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "build/lib/index.js",
   "license": "MIT",
   "devDependencies": {
     "@storybook/addon-info": "^4.1.11",
