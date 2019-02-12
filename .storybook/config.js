@@ -3,17 +3,18 @@ import { addDecorator, configure, setAddon } from "@storybook/react";
 import { withInfo } from "@storybook/addon-info";
 import { withKnobs } from "@storybook/addon-knobs/react";
 import { ThemeProvider } from "styled-components";
-
-import createTheme from "../src/theme";
+import theme from "../src/theme/index";
+import { GlobalStyle } from "../src/theme/globalstyle";
 
 addDecorator(renderStory => (
-  <ThemeProvider theme={createTheme()}>{renderStory()}</ThemeProvider>
+  <>
+    <GlobalStyle />
+    <ThemeProvider theme={theme}>{renderStory()}</ThemeProvider>
+  </>
 ));
 
 addDecorator(
   withInfo({
-    header: true,
-    inline: true,
     propTablesExclude: [ThemeProvider] // do not display propTable for HOC
   })
 );
