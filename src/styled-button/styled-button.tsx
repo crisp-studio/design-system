@@ -1,5 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
+import theme from "../theme";
+import { space, width, color, fontSize, textAlign } from "styled-system";
 
 export interface Props {
   /** Button content  */
@@ -17,27 +19,22 @@ export interface Props {
 const noop = () => {};
 
 const RootStyledButton = styled.button`
-  padding: 0px 20px;
-  height: 49px;
-  border-radius: 2px;
-  border: 2px solid #3d5567;
-  display: inline-flex;
-  background-color: ${props => (props.disabled ? "red" : "blue")};
+  padding: ${theme.space[2]}px ${theme.space[3]}px;
+  border-radius: ${theme.radii[2]};
+  background-color: ${theme.colors.primary[7]};
+  border: none;
+  outline: none;
 `;
 
 const ButtonSpan = styled.span`
   margin: auto;
-  font-size: 16px;
+  font-size: ${theme.fontSizes[2]};
   font-weight: bold;
   text-align: center;
-  color: #fff;
+  color: ${theme.colors.primary[0]};
   text-transform: uppercase;
 `;
 
-/*
- * If you opt to do export default, you'll still need to have this
- * export for the TsDocGen work properly (I struggled to find this out)
- */
 export const StyledButton: React.SFC<Props> = (props: Props): any => {
   const { children, onClick, disabled = false } = props;
 
