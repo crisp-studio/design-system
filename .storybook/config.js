@@ -5,11 +5,14 @@ import { withKnobs } from "@storybook/addon-knobs/react";
 import { ThemeProvider } from "styled-components";
 import theme from "../src/theme/index";
 import { GlobalStyle } from "../src/theme/globalstyle";
+import { Box } from "rebass";
 
 addDecorator(renderStory => (
   <>
     <GlobalStyle />
-    <ThemeProvider theme={theme}>{renderStory()}</ThemeProvider>
+    <ThemeProvider theme={theme}>
+      <Box p={3}>{renderStory()}</Box>
+    </ThemeProvider>
   </>
 ));
 

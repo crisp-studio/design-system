@@ -1,64 +1,55 @@
-import { Box } from "../box/box";
-import theme from "../theme";
-import styled, { css } from "styled-components";
-import { space, width, color, fontSize, textAlign } from "styled-system";
-
-// ? How can I add the default props to my styled component and access them there?
+import React from "react";
+import styled, { css } from "../util/styled-components";
+import { Button as Base } from "rebass";
+import { color } from "styled-system";
 
 interface ButtonProps {
-  inverted?: boolean;
   scale?: boolean;
-  chevronLeft?: boolean;
-  chevronRight?: boolean;
   disabled?: boolean;
+  chevronRight?: boolean;
+  chevronLeft?: boolean;
+  inverted?: boolean;
 }
 
-export const Button: React.SFC = styled(Box)<ButtonProps>`
-  -webkit-font-smoothing: antialiased;
-  display: inline-block;
-  vertical-align: middle;
-  text-align: center;
-  text-decoration: none;
-  font-size: inherit;
-  font-family: inherit;
-  font-weight: ${theme.fontWeights.bold};
-  line-height: 1.125;
-  appearance: none;
+export const Button = styled(Base)<ButtonProps>`
   cursor: pointer;
-  transition: ${theme.transition} box-shadow;
-  box-shadow: 0 2px 4px ${theme.shadowColor};
-  border-radius: ${theme.pill};
-  border: none;
-  color: white;
-  background-color: blue;
+  border-radius: ${p => p.theme.radii[2]};
+  -webkit-font-smoothing: antialiased;
+  transition: ${p => p.theme.transition} box-shadow;
+  box-shadow: ${p => p.theme.shadows.s};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  display: inline-block;
 
-  ${p => p.inverted && `background-color: blue, color: white`}
+  ${props =>
+    props.inverted && {
+      backgroundColor: props.color,
+      color: props.bg
+    }};
 
   &:hover,
   &:focus {
     outline: 0;
-    box-shadow: 0 2px 6px ${theme.shadowColor};
+    box-shadow: ${p => p.theme.shadows.m};
   }
   &:active {
     outline: 0;
-    box-shadow: 0 2px 8px 2px ${theme.shadowColor};
+    box-shadow: ${p => p.theme.shadows.m};
   }
+
   ${p => p.disabled && { opacity: 0.25, cursor: "not-allowed" }};
 
   ${p =>
     p.scale &&
     css`
-      transition: ${theme.transition} all;
+      transition: all ${p.theme.transition};
       will-change: transform;
       transform: scale(1);
       &:hover,
       &:focus {
-        transform: scale(${theme.scaleFactor});
+        transform: scale(${p.theme.scaleFactor});
       }
-      ${theme.mediaQueries.reduceMotion} {
-        transform: none;
-      }
-    `};
+    `}
+
   ${p =>
     p.chevronLeft &&
     css`
@@ -76,13 +67,3 @@ export const Button: React.SFC = styled(Box)<ButtonProps>`
       }
     `};
 `;
-
-Button.defaultProps = {
-  theme,
-  fontSize: 3,
-  m: 0,
-  px: 3,
-  py: 2
-};
-
-Button.displayName = "Button";
