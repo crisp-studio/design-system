@@ -1,7 +1,6 @@
 import theme from "./index";
 import { createGlobalStyle } from "styled-components";
 
-// TODO: Add better font handeling
 export const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Inter';
@@ -38,13 +37,13 @@ export const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    font-size: ${theme.fontSizes[2]}px;
-    font-family: ${theme.font};
     line-height: 1.375;
     position: relative;
     height: 100%;
+    font-family: "Inter", sans-serif;
     max-height: 100%;
     width: 100%;
+    -webkit-font-smoothing: antialiased;
   }
   a {
     color: currentColor;
