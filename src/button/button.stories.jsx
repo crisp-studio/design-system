@@ -1,8 +1,8 @@
 import React from "react";
+import { Flex } from "rebass";
+import { Button } from "./button";
 import { storiesOf } from "@storybook/react";
 import { withInfo } from "@storybook/addon-info";
-import { Button } from "./button";
-import { Flex } from "../flex/flex";
 
 storiesOf("Button", module)
   .add(
@@ -14,45 +14,44 @@ storiesOf("Button", module)
   )
   .add("Colors", () => (
     <Flex wrap>
-      <Button mr={2}>Button</Button>
-      <Button bg="accent" mr={2}>
+      <Button bg="primary.2" color="primary.8" mr={2}>
+        Button
+      </Button>
+      <Button bg="accent.2" color="accent.8" mr={2}>
         Accent
       </Button>
-      <Button bg="success" mr={2}>
+      <Button bg="supp.green" mr={2}>
         Success
       </Button>
-      <Button bg="accent" inverted mr={2}>
-        Inverted
+      <Button bg="primary.9" color="primary.1" mr={2}>
+        Blue
       </Button>
     </Flex>
   ))
   .add("Font size", () => (
     <Flex align="baseline" wrap>
-      <Button mr={2} f={1}>
+      <Button mr={2} fontSize={1}>
         Size 1
       </Button>
-      <Button bg="accent" mr={2} f={2}>
+      <Button mr={2} fontSize={2}>
         Size 2
       </Button>
-      <Button bg="info" mr={2} f={3}>
+      <Button mr={2} fontSize={3}>
         Size 3
       </Button>
-      <Button bg="accent" inverted mr={2} f={4}>
+      <Button mr={2} fontSize={4}>
         Size 4
       </Button>
     </Flex>
   ))
-  .add("Width", () => <Button w={1}>Full Width</Button>)
+  .add("Width", () => <Button width={1}>Full Width</Button>)
   .add("Disabled", () => <Button disabled>Disabled</Button>)
-  .add("Inverted", () => <Button inverted>Inverted</Button>)
   .add("Scale", () => <Button scale>Scale</Button>)
   .add("Chevrons", () => (
     <Flex wrap>
-      <Button bg="info" mr={3} chevronLeft>
+      <Button mr={3} chevronLeft>
         Back
       </Button>
-      <Button bg="success" chevronRight>
-        Forward
-      </Button>
+      <Button chevronRight>Forward</Button>
     </Flex>
   ));
